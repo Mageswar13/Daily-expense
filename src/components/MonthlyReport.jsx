@@ -13,13 +13,13 @@ function MonthlyReport() {
         <div className="report-card">
           <span className="report-label">Income</span>
           <span className="report-value report-value--income">
-            +${report.income.toFixed(2)}
+            +₹{report.income.toFixed(2)}
           </span>
         </div>
         <div className="report-card">
           <span className="report-label">Expenses</span>
           <span className="report-value report-value--expense">
-            -${report.expenses.toFixed(2)}
+            -₹{report.expenses.toFixed(2)}
           </span>
         </div>
         <div className="report-card">
@@ -29,7 +29,7 @@ function MonthlyReport() {
               report.net >= 0 ? "report-value--income" : "report-value--expense"
             }`}
           >
-            {report.net >= 0 ? "+" : "-"}${Math.abs(report.net).toFixed(2)}
+            {report.net >= 0 ? "+" : "-"}₹{Math.abs(report.net).toFixed(2)}
           </span>
         </div>
         <div className="report-card">
