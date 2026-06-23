@@ -1,14 +1,13 @@
-// src/pages/Home.jsx
 import DashboardSummary from "../components/DashboardSummary";
 import TransactionForm from "../components/TransactionForm";
-import SearchFilter from "../components/SearchFilter";
 import TransactionList from "../components/TransactionList";
+import SearchFilter from "../components/SearchFilter";
 import CategoryChart from "../components/CategoryChart";
 import MonthlyReport from "../components/MonthlyReport";
 
-function Home() {
+function HomePage() {
   return (
-    <main className="home-page">
+    <div className="home-page">
       <h1 className="page-title">Expense Tracker</h1>
 
       <DashboardSummary />
@@ -25,8 +24,15 @@ function Home() {
           <CategoryChart />
         </div>
       </div>
-    </main>
+
+      <footer className="footer">
+        <h3>Expense Tracker</h3>
+        <p>Email: mageswar2007@gmail.com.com</p>
+        <p>Phone: +91 8056335689</p>
+        <p>© 2026 Expense Tracker. All Rights Reserved.</p>
+      </footer>
+    </div>
   );
 }
 
-export default Home;
+export default HomePage;
