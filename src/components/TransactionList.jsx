@@ -116,7 +116,7 @@ function TransactionList() {
                   {t.category} &middot; {formatDate(t.date)}
                 </span>
               </div>
-              <span className={`transaction-amount transaction-amount--${t.type}`}>
+              <span className={`transaction-amount transaction-amount--₹{t.type}`}>
                 {t.type === "income" ? "+" : "-"}${Number(t.amount).toFixed(2)}
               </span>
               <div className="transaction-actions">
