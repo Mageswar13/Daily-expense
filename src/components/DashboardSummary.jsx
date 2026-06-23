@@ -14,7 +14,7 @@ function DashboardSummary() {
       <div className="summary-card">
         <span className="summary-label">Balance</span>
         <span className={`summary-value ₹{balance >= 0 ? "summary-value--income" : "summary-value--expense"}`}>
-          {balance >= 0 ? "+" : "-"}${Math.abs(balance).toFixed(2)}
+          {balance >= 0 ? "+" : "-"}₹{Math.abs(balance).toFixed(2)}
         </span>
       </div>
       <div className="summary-card">
