@@ -1,68 +1,58 @@
-// src/components/CategoryChart.jsx
-import { useExpenses } from "../context/ExpenseContext";
+import { useExpense } from "../context/ExpenseContext";
 import { getTotalsByCategory } from "../utils/calculations";
 
-const CHART_HEIGHT = 200;
-const BAR_WIDTH = 48;
-const BAR_GAP = 24;
-const CHART_PADDING = 32;
-
 function CategoryChart() {
-  const { transactions } = useExpenses();
-  const totals = getTotalsByCategory(transactions);
+  const { transactions } = useExpense();
 
-  if (totals.length === 0) {
+  const data = getTotalsByCategory(transactions);
+
+  if (!data.length) {
     return (
-      <section className="category-chart" aria-label="Spending by category">
+      <section className="category-chart">
         <h2 className="section-title">Spending by Category</h2>
-        <p className="empty-state">Add an expense to see the breakdown.</p>
+        <p className="empty-state">No expense data available.</p>
       </section>
     );
   }
 
-  const maxTotal = Math.max(...totals.map((t) => t.total));
-  const chartWidth = totals.length * (BAR_WIDTH + BAR_GAP) + CHART_PADDING;
+  const chartHeight = 250;
+  const maxValue = Math.max(...data.map((d) => d.total));
 
   return (
-    <section className="category-chart" aria-label="Spending by category">
+    <section className="category-chart">
       <h2 className="section-title">Spending by Category</h2>
+
       <svg
-        viewBox={`0 0 ${chartWidth} ${CHART_HEIGHT + 40}`}
         width="100%"
-        height={CHART_HEIGHT + 40}
-        role="img"
-        aria-label={`Bar chart of spending by category: ${totals
-          .map((t) => `${t.category} $${t.total.toFixed(2)}`)
-          .join(", ")}`}
+        height={chartHeight + 60}
+        viewBox={`0 0 ${data.length * 100} ${chartHeight + 60}`}
       >
-        {totals.map((item, i) => {
-          const barHeight = maxTotal > 0 ? (item.total / maxTotal) * CHART_HEIGHT : 0;
-          const x = CHART_PADDING / 2 + i * (BAR_WIDTH + BAR_GAP);
-          const y = CHART_HEIGHT - barHeight;
+        {data.map((item, index) => {
+          const barHeight = (item.total / maxValue) * chartHeight;
 
           return (
             <g key={item.category}>
               <rect
-                x={x}
-                y={y}
-                width={BAR_WIDTH}
+                x={index * 100 + 25}
+                y={chartHeight - barHeight}
+                width="50"
                 height={barHeight}
-                rx="4"
+                rx="8"
                 className="chart-bar"
-              >
-                <title>{`${item.category}: $${item.total.toFixed(2)}`}</title>
-              </rect>
+              />
+
               <text
-                x={x + BAR_WIDTH / 2}
-                y={y - 8}
+                x={index * 100 + 50}
+                y={chartHeight - barHeight - 10}
                 textAnchor="middle"
                 className="chart-value-label"
               >
-                ${item.total.toFixed(0)}
+                ₹{item.total}
               </text>
+
               <text
-                x={x + BAR_WIDTH / 2}
-                y={CHART_HEIGHT + 20}
+                x={index * 100 + 50}
+                y={chartHeight + 25}
                 textAnchor="middle"
                 className="chart-category-label"
               >
