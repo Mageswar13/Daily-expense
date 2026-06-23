@@ -193,7 +193,14 @@ body {
   gap: 15px;
 }
 
-/* Chart */
+/* Category Chart */
+
+.category-chart {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 350px;
+}
 
 .category-chart svg {
   width: 100%;
@@ -202,13 +209,21 @@ body {
 
 .chart-bar {
   fill: #2563eb;
+  transition: all 0.3s ease;
+}
+
+.chart-bar:hover {
+  fill: #1d4ed8;
 }
 
 .chart-value-label {
+  font-size: 12px;
+  font-weight: bold;
   fill: #111827;
 }
 
 .chart-category-label {
+  font-size: 12px;
   fill: #6b7280;
 }
 
