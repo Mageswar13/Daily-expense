@@ -23,7 +23,7 @@ function DashboardSummary() {
       </div>
       <div className="summary-card">
         <span className="summary-label">Total Expenses</span>
-        <span className="summary-value summary-value--expense">-${expenses.toFixed(2)}</span>
+        <span className="summary-value summary-value--expense">- +₹{expenses.toFixed(2)}</span>
       </div>
     </section>
   );
