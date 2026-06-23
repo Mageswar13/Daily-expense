@@ -13,17 +13,17 @@ function DashboardSummary() {
     <section className="dashboard-summary" aria-label="Dashboard summary">
       <div className="summary-card">
         <span className="summary-label">Balance</span>
-        <span className={`summary-value ${balance >= 0 ? "summary-value--income" : "summary-value--expense"}`}>
+        <span className={`summary-value ₹{balance >= 0 ? "summary-value--income" : "summary-value--expense"}`}>
           {balance >= 0 ? "+" : "-"}${Math.abs(balance).toFixed(2)}
         </span>
       </div>
       <div className="summary-card">
         <span className="summary-label">Total Income</span>
-        <span className="summary-value summary-value--income">+${income.toFixed(2)}</span>
+        <span className="summary-value summary-value--income">+₹{income.toFixed(2)}</span>
       </div>
       <div className="summary-card">
         <span className="summary-label">Total Expenses</span>
-        <span className="summary-value summary-value--expense">- +₹{expenses.toFixed(2)}</span>
+        <span className="summary-value summary-value--expense">-₹{expenses.toFixed(2)}</span>
       </div>
     </section>
   );
